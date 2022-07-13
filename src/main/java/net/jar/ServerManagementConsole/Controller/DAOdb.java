@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import com.anydesk.ops.Controller.DBUtil;
+import net.jar.ServerManagementConsole.Controller.DBUtil;
 
 @ManagedBean(name = "beanDAOdb", eager = true)
 @SessionScoped
