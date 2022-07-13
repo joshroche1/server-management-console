@@ -44,19 +44,18 @@
   <h3>SERVERS</h3>
   <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="serv">
     <h:column><f:facet name="header"></f:facet><a href="serverdetail.xhtml"><span>&#9881;</span></a></h:column>
-    <h:column><f:facet name="header">Active</f:facet></h:column>
-    <h:column><f:facet name="header">Machine ID</f:facet>#{serv.machineId}</h:column>
+    <h:column><f:facet name="header">Active</f:facet>#{serv.active}</h:column>
     <h:column><f:facet name="header">Hostname</f:facet>#{serv.hostname}</h:column>
     <h:column><f:facet name="header">Provider</f:facet>#{serv.provider}</h:column>
-    <h:column><f:facet name="header">Datacenter</f:facet>#{serv.dataCenter}</h:column>
     <h:column><f:facet name="header">Type</f:facet>#{serv.type}</h:column>
-    <h:column><f:facet name="header">Role</f:facet>#{serv.role}</h:column>
-    <h:column><f:facet name="header">Zone</f:facet>#{serv.zone}</h:column>
-    <h:column><f:facet name="header">Country</f:facet>#{serv.country}</h:column>
+    <h:column><f:facet name="header">OS</f:facet>#{serv.os}</h:column>
+    <h:column><f:facet name="header">Distro</f:facet>#{serv.distro}</h:column>
     <h:column><f:facet name="header">CPU Cores</f:facet>#{serv.cpuCores}</h:column>
     <h:column><f:facet name="header">Memory</f:facet>#{serv.memory}</h:column>
+    <h:column><f:facet name="header">Disk Space</f:facet>#{serv.diskSize}</h:column>
     <h:column><f:facet name="header">Public IP Address</f:facet>#{serv.publicIpAddress}</h:column>
     <h:column><f:facet name="header">FQDN</f:facet>#{serv.fqdn}</h:column>
+    <h:column><f:facet name="header">Notes</f:facet>#{serv.notes}</h:column>
   </h:dataTable>
   <h:outputScript library="js" name="sortTable.js" />
 </section>
