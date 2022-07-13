@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <h:outputStylesheet library="css" name="style.css" />
+  <title>ADESO Upgrade</title>
+</h:head>
+<h:body>
+
+<ui:composition template="templates/base.xhtml">
+
+<ui:define name="content">
+
+<div class="row" style="position: relative; top: 150px;">
+
+<div class="col-2 col-s-2">
+  <div class="content">
+    <ul class="menu">
+      <li>
+        <h:form>
+          <h:commandButton action="#{beanUser.logout}" value="LOGOUT" class="ad-button">
+            <span>#{beanUser.username}</span>
+          </h:commandButton>
+        </h:form>
+      </li>
+      <li><a href="#">ADD SERVER</a></li>
+      <li><a href="#">SERVER REPORTS</a></li>
+      <li><a href="#">SERVER COUNTS</a></li>
+      <li><a href="#">EXPORT</a></li>
+      <li><a href="#">FILTERS</a></li>
+      <li><a href="#">SEARCH</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="col-8 col-s-10">
+
+<section class="content">
+  <h3>SERVER DETAIL</h3>
+  <table id="serverDetailTable">
+    <tr><th onclick="sortTable(0)">Field</th>
+      <th onclick="sortTable(1)">Value</th>
+      <th onclick="sortTable(2)">Sample</th></tr>
+    <tr><td>machineId</td><td></td></tr>
+    <tr><td>hostname</td><td>bi-collector</td></tr>
+    <tr><td>provider</td><td>Hetzner</td></tr>
+    <tr><td>dataCenter</td><td>FSN1-DC14</td></tr>
+    <tr><td>type</td><td>bare-metal Desktop</td></tr>
+    <tr><td>role</td><td>relay, control, web, other</td></tr>
+    <tr><td>active</td><td></td></tr>
+    <tr><td>publicIpAddress</td><td></td></tr>
+    <tr><td>systemConsole</td><td></td></tr>
+    <tr><td>systemOS</td><td>windows, linux, macos, unix</td></tr>
+    <tr><td>systemDistro</td><td>Debian GNU/Linux 10 (buster)</td></tr>
+    <tr><td>systemKernel</td><td>4.19.0-18-amd64 x86_64</td></tr>
+    <tr><td>systemCompiler</td><td>gcc</td></tr>
+    <tr><td>systemV</td><td>8.3.0</td></tr>
+    <tr><td>country</td><td>DE</td></tr>
+    <tr><td>city</td><td>Falkenstein</td></tr>
+    <tr><td>zone</td><td>EU</td></tr>
+    <tr><td>cpuCores</td><td>8</td></tr>
+    <tr><td>cpuModel</td><td>Intel Xeon W-2145</td></tr>
+    <tr><td>cpuSpeed</td><td>1200/4500 MHz</td></tr>
+    <tr><td>cpuL1cache</td><td>512 KiB</td></tr>
+    <tr><td>cpuL2cache</td><td>11.0 MiB</td></tr>
+    <tr><td>cpuL3cache</td><td>11.0 MiB</td></tr>
+    <tr><td>cpuArch</td><td>Skylake</td></tr>
+    <tr><td>cpuInsSize</td><td>32 or 64 bit</td></tr>
+    <tr><td>cpuBogomips</td><td>118400</td></tr>
+    <tr><td>cpuRev</td><td>4</td></tr>
+    <tr><td>cpuType</td><td>MT MCP</td></tr>
+    <tr><td>cpuFlags</td><td>3dnowprefetch abm acpi adx aes aperfmperf apic arat arch_perfmon art avx avx2 avx512bw avx512cd avx512dq avx512f avx512vl bmi1 bmi2 bts cat_l3 cdp_l3 clflush clflushopt clwb cmov constant_tsc cpuid cpuid_fault cqm cqm_llc cqm_mbm_local cqm_mbm_total cqm_occup_llc cx16 cx8 dca de ds_cpl dtes64 dtherm dts epb ept ept_ad erms est f16c flexpriority flush_l1d fma fpu fsgsbase fxsr hle ht hwp hwp_act_window hwp_epp hwp_pkg_req ibpb ibrs ida intel_ppin intel_pt invpcid invpcid_single lahf_lm lm mba mca mce md_clear mmx monitor movbe mpx msr mtrr nonstop_tsc nopl nx pae pat pbe pcid pclmulqdq pdcm pdpe1gb pebs pge pln pni popcnt pse pse36 pti pts rdrand rdseed rdt_a rdtscp rep_good rtm sdbg sep smap smep smx ss ssbd sse sse2 sse4_1 sse4_2 ssse3 stibp syscall tm tm2 tpr_shadow tsc tsc_adjust tsc_deadline_timer vme vmx vnmi vpid x2apic xgetbv1 xsave xsavec xsaveopt xsaves xtopology xtpr</td></tr>
+    <tr><td>memoryInfo</td><td></td></tr>
+    <tr><td>memoryTotal</td><td>125.6 GiB</td></tr>
+    <tr><td>memorySize</td><td>32 GiB</td></tr>
+    <tr><td>memoryECC</td><td>Single-bit ECC</td></tr>
+    <tr><td>memoryManufacturer</td><td>Micron</td></tr>
+    <tr><td>memoryPartNo</td><td>36ASF4G72PZ-2G6E1</td></tr>
+    <tr><td>memorySpeed</td><td>2666 MT/s</td></tr>
+    <tr><td>memoryType</td><td>DDR4</td></tr>
+    <tr><td>disks</td><td></td></tr>
+    <tr><td>diskId</td><td>/dev/sda</td></tr>
+    <tr><td>diskSize</td><td>238.47 GiB</td></tr>
+    <tr><td>diskModel</td><td>36ASF4G72PZ-2G6E1</td></tr>
+    <tr><td>diskSerial</td><td>PHLA813201T0256CGN</td></tr>
+    <tr><td>diskSpeed</td><td>6.0 Gbps</td></tr>
+    <tr><td>diskVendor</td><td>Intel</td></tr>
+    <tr><td>diskLanes</td><td>4 (nvme)</td></tr>
+    <tr><td>raidArray</td><td></td></tr>
+    <tr><td>raidDevice</td><td>md4</td></tr>
+    <tr><td>raidOnline</td><td></td></tr>
+    <tr><td>raidStatus</td><td>active</td></tr>
+    <tr><td>raidType</td><td>mdraid</td></tr>
+    <tr><td>raidBlocks</td><td>3750481920</td></tr>
+    <tr><td>raidChunkSize</td><td>512 Kb</td></tr>
+    <tr><td>raidRaid</td><td>raid-0 mirror</td></tr>
+    <tr><td>raidSuperBlocks</td><td>1.2</td></tr>
+    <tr><td>networkDevice</td><td>Intel 82599ES 10-Gigabit SFI/SFP+ Network</td></tr>
+    <tr><td>networkBusId</td><td>17:00.0</td></tr>
+    <tr><td>networkChipId</td><td>8086:10fb</td></tr>
+    <tr><td>networkDriver</td><td>ixgbe</td></tr>
+    <tr><td>networkPort</td><td>7000</td></tr>
+    <tr><td>networkV</td><td>5.1.0-k</td></tr>
+    <tr><td>networkInterfaces</td><td>;</td></tr>
+    <tr><td>networkInterface</td><td>ens192</td></tr>
+    <tr><td>netIntDuplex</td><td>full duplex</td></tr>
+    <tr><td>netIntMacAddr</td><td></td></tr>
+    <tr><td>netIntSpeed</td><td>10000 Mbps</td></tr>
+    <tr><td>netIntStateUp</td><td>true = up</td></tr>
+    <tr><td>netIntIpAddr</td><td>92.168.2.1</td></tr>
+    <tr><td>netIntIpBroadcast</td><td>192.168.2.255</td></tr>
+    <tr><td>netIntIpv6Addr</td><td>2104::01</td></tr>
+    <tr><td>netIntIpv6Scope</td><td> global, link</td></tr>
+    <tr><td>graphicsDevice</td><td>ASPEED Graphics Family</td></tr>
+    <tr><td>graphicsBusId</td><td>03:00.0</td></tr>
+    <tr><td>graphicsChipId</td><td>1a03.2000</td></tr>
+    <tr><td>graphicsDriver</td><td></td></tr>
+    <tr><td>sensorCpuTemp</td><td>50.0 C</td></tr>
+    <tr><td>sensorMoboTemp</td><td></td></tr>
+    <tr><td>cpuFanSpeed</td><td></td></tr>
+    <tr><td>machineMobo</td><td>ASUSTeK</td></tr>
+    <tr><td>machineType</td><td>Desktop</td></tr>
+    <tr><td>machineUEFI</td><td>American Megatrends</td></tr>
+    <tr><td>machineBIOS</td><td></td></tr>
+    <tr><td>machineDate</td><td></td></tr>
+    <tr><td>machineModel</td><td>WS C422 DC</td></tr>
+    <tr><td>machineSerial</td><td>181242084000214</td></tr>
+    <tr><td>machineV</td><td>0403</td></tr>
+  </table>
+  <h:outputScript library="js" name="sortTable.js" />
+</section>
+<section class="content">
+  
+</section>
+
+</div>
+
+<div class="col-2 col-s-12">
+  <div class="content" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <h3>AD Controls</h3>
+    <h:commandButton value="SET RELAY TO 0 WEIGHT" action="#" class="ad-button"></h:commandButton>
+    <h:commandButton value="SET RELAY TO OLD WEIGHT" action="#" class="ad-button"></h:commandButton>
+    <h:commandButton value="SET RELAY TO PART WEIGHT" action="#" class="ad-button"></h:commandButton>
+    <h:commandButton value="EXILE CLIENTS FROM RELAY" action="#" class="ad-button"></h:commandButton>
+    <h:commandButton value="RECONNECT UPLINKS" action="#" class="ad-button"></h:commandButton>
+    <h:commandButton value="APT UPDATE/UPGRADE" action="#" class="ad-button"></h:commandButton>
+    <h:commandButton value="REBOOT" action="#" class="ad-button"></h:commandButton>
+  </div>
+</div>
+
+</div>
+
+<br /><br /><br /><br /><br /><br />
+
+</ui:define>
+
+</ui:composition>
+
+</h:body>
+</html>
