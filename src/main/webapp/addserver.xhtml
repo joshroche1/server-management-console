@@ -28,7 +28,7 @@
           </h:commandButton>
         </h:form>
       </li>
-      <li><a href="#">ADD SERVER</a></li>
+      <li><a href="addserver.xhtml">ADD SERVER</a></li>
       <li><a href="#">SERVER REPORTS</a></li>
       <li><a href="#">SERVER COUNTS</a></li>
       <li><a href="#">EXPORT</a></li>
@@ -42,23 +42,46 @@
 <div class="col-8 col-s-10">
 
 <section class="content">
-  <h3>SERVERS</h3>
-  <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="serv">
-    <h:column><f:facet name="header"></f:facet><a href="serverdetail.xhtml"><span>&#9881;</span></a></h:column>
-    <h:column><f:facet name="header">Active</f:facet>#{serv.active}</h:column>
-    <h:column><f:facet name="header">Hostname</f:facet>#{serv.hostname}</h:column>
-    <h:column><f:facet name="header">Provider</f:facet>#{serv.provider}</h:column>
-    <h:column><f:facet name="header">Type</f:facet>#{serv.type}</h:column>
-    <h:column><f:facet name="header">OS</f:facet>#{serv.os}</h:column>
-    <h:column><f:facet name="header">Distro</f:facet>#{serv.distro}</h:column>
-    <h:column><f:facet name="header">CPU Cores</f:facet>#{serv.cpuCores}</h:column>
-    <h:column><f:facet name="header">Memory</f:facet>#{serv.memory}</h:column>
-    <h:column><f:facet name="header">Disk Space</f:facet>#{serv.diskSize}</h:column>
-    <h:column><f:facet name="header">Public IP Address</f:facet>#{serv.publicIpAddress}</h:column>
-    <h:column><f:facet name="header">FQDN</f:facet>#{serv.fqdn}</h:column>
-    <h:column><f:facet name="header">Notes</f:facet>#{serv.notes}</h:column>
-  </h:dataTable>
-  <h:outputScript library="js" name="sortTable.js" />
+  <h3>ADD SERVER</h3>
+  <h:form id="addServerForm">
+    <table><tr><td>
+      <label>Active</label></td><td><h:selectBooleanCheckbox id="addServerFormActive" value="#{beanDAOdb.active}" required="true" /></td></tr><tr><td>
+    <label>Hostname</label></td><td><h:inputText id="addServerFormHostname" value="#{beanDAOdb.hostname}" required="true" /></td></tr><tr><td>
+    <label>Provider</label></td><td><h:inputText id="addServerFormProvider" value="#{beanDAOdb.provider}" required="true" /></td></tr><tr><td>
+    <label>Type</label></td><td>
+      <h:selectOneMenu name="addServerFormType" value="#{beanDAOdb.type}" required="true">
+        <f:selectItem itemValue="vm" itemLabel="VM" />
+        <f:selectItem itemValue="container" itemLabel="Container" />
+        <f:selectItem itemValue="desktop" itemLabel="Desktop" />
+        <f:selectItem itemValue="laptop" itemLabel="Laptop" />
+        <f:selectItem itemValue="sbc" itemLabel="SBC" />
+        <f:selectItem itemValue="other" itemLabel="Other" />
+      </h:selectOneMenu></td></tr><tr><td>
+    <label>OS</label></td><td>
+      <h:selectOneMenu name="addServerFormOs" value="#{beanDAOdb.os}" required="true">
+        <f:selectItem itemValue="linux" itemLabel="Linux" />
+        <f:selectItem itemValue="windows" itemLabel="Windows" />
+        <f:selectItem itemValue="macos" itemLabel="macOS" />
+      </h:selectOneMenu></td></tr><tr><td>
+    <label>Distro</label></td><td>
+      <h:selectOneMenu name="addServerFormDistro" value="#{beanDAOdb.distro}" required="true">
+        <f:selectItem itemValue="n/a" itemLabel="N/A" />
+        <f:selectItem itemValue="debian" itemLabel="Debian" />
+        <f:selectItem itemValue="ubuntu" itemLabel="Ubuntu" />
+        <f:selectItem itemValue="centos" itemLabel="CentOS" />
+        <f:selectItem itemValue="rhel" itemLabel="RHEL" />
+        <f:selectItem itemValue="other" itemLabel="Other" />
+      </h:selectOneMenu></td></tr><tr><td>
+    <label>CPU Cores</label></td><td><h:inputText id="addServerFormCpuCores" value="#{beanDAOdb.cpuCores}" required="true" /></td></tr><tr><td>
+    <label>Memory</label></td><td><h:inputText id="addServerFormMemory" value="#{beanDAOdb.memory}" required="true" /></td></tr><tr><td>
+    <label>Disk Size</label></td><td><h:inputText id="addServerFormDiskSize" value="#{beanDAOdb.diskSize}" required="true" /></td></tr><tr><td>
+    <label>Public IP Address</label></td><td><h:inputText id="addServerFormIP" value="#{beanDAOdb.publicIpAddress}" required="true" /></td></tr><tr><td>
+    <label>FQDN</label></td><td><h:inputText id="addServerFormFqdn" value="#{beanDAOdb.fqdn}" required="true" /></td></tr><tr><td>
+    <label>Notes</label></td><td><h:inputTextarea id="addServerFormNotes" value="#{beanDAOdb.notes}" required="false" /></td></tr><tr><td>
+    <h:commandButton value="ADD" action="#"></h:commandButton> 
+      <input type="reset" /></td></tr>
+    </table>
+  </h:form>
 </section>
 <section class="content">
   
@@ -69,8 +92,8 @@
 <div class="col-2 col-s-12">
   <div class="content" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
     <h3>System Controls</h3>
-    <h:commandButton value="APT UPDATE/UPGRADE" action="#" class="ad-button"></h:commandButton>
-    <h:commandButton value="REBOOT" action="#" class="ad-button"></h:commandButton>
+    <h:form><h:commandButton value="APT UPDATE/UPGRADE" action="#" class="ad-button"></h:commandButton></h:form>
+    <h:form><h:commandButton value="REBOOT" action="#" class="ad-button"></h:commandButton></h:form>
   </div>
 </div>
 
