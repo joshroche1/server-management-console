@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <h:outputStylesheet library="css" name="style.css" />
+  <title>ADESO Upgrade</title>
+</h:head>
+<h:body>
+
+<ui:composition template="templates/base.xhtml">
+
+<ui:define name="content">
+
+<div class="row" style="position: relative; top: 150px;">
+
+<div class="col-2 col-s-2">
+  <div class="content">
+    <h3>#{beanUser.username}</h3>
+    <ul class="menu">
+      <li>
+        <h:form>
+          <h:commandButton action="#{beanUser.logout}" value="LOGOUT" class="ad-button"></h:commandButton>
+        </h:form>
+      </li>
+      <li><a href="#">ADD SERVER</a></li>
+      <li><a href="#">SERVER REPORTS</a></li>
+      <li><a href="#">SERVER COUNTS</a></li>
+      <li><a href="#">EXPORT</a></li>
+      <li><a href="#">FILTERS</a></li>
+      <li><a href="#">SEARCH</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="col-8 col-s-10">
+
+<section class="content">
+  <h3>SERVERS</h3>
+  <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="serv">
+    <h:column><f:facet name="header"></f:facet><a href="serverdetail.xhtml"><span>&#9881;</span></a></h:column>
+    <h:column><f:facet name="header">Active</f:facet></h:column>
+    <h:column><f:facet name="header">Machine ID</f:facet>#{serv.machineId}</h:column>
+    <h:column><f:facet name="header">Hostname</f:facet>#{serv.hostname}</h:column>
+    <h:column><f:facet name="header">Provider</f:facet>#{serv.provider}</h:column>
+    <h:column><f:facet name="header">Datacenter</f:facet>#{serv.dataCenter}</h:column>
+    <h:column><f:facet name="header">Type</f:facet>#{serv.type}</h:column>
+    <h:column><f:facet name="header">Role</f:facet>#{serv.role}</h:column>
+    <h:column><f:facet name="header">Zone</f:facet>#{serv.zone}</h:column>
+    <h:column><f:facet name="header">Country</f:facet>#{serv.country}</h:column>
+    <h:column><f:facet name="header">CPU Cores</f:facet>#{serv.cpuCores}</h:column>
+    <h:column><f:facet name="header">Memory</f:facet>#{serv.memory}</h:column>
+    <h:column><f:facet name="header">Public IP Address</f:facet>#{serv.publicIpAddress}</h:column>
+    <h:column><f:facet name="header">FQDN</f:facet>#{serv.fqdn}</h:column>
+  </h:dataTable>
+  <h:outputScript library="js" name="sortTable.js" />
+</section>
+<section class="content">
+  
+</section>
+
+</div>
+
+<div class="col-2 col-s-12">
+  <div class="content">
+ASIDE
+  </div>
+</div>
+
+</div>
+
+<br /><br /><br /><br /><br />
+
+</ui:define>
+
+</ui:composition>
+
+</h:body>
+</html>
