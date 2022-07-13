@@ -33,8 +33,8 @@ public class AuthorizationFilter implements Filter {
           || (ses != null && ses.getAttribute("username") != null)
           || reqURI.indexOf("/test.xhtml") >= 0
           || (reqURI.indexOf("/servers.xhtml") >= 0 && (ses != null && ses.getAttribute("username") != null))
-          || (reqURI.indexOf("/providers.xhtml") >= 0 && (ses != null && ses.getAttribute("username") != null))
-          || (reqURI.indexOf("/invoices.xhtml") >= 0 && (ses != null && ses.getAttribute("username") != null))
+          || (reqURI.indexOf("/serverdetails.xhtml") >= 0 && (ses != null && ses.getAttribute("username") != null))
+          || (reqURI.indexOf("/containers.xhtml") >= 0 && (ses != null && ses.getAttribute("username") != null))
           || reqURI.contains("javax.faces.resource"))
              chain.doFilter(request, response);
       else
