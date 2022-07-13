@@ -43,7 +43,7 @@ public class DBUtil {
   public ResultSet getServers() {
     try {
       conn = this.connect();
-      PreparedStatement pstmt = conn.prepareStatement("SELECT active, hostname, provider, type, os, distro, cpuCores, memory, diskSize, publicIpAddress, fqdn, notes FROM server", ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+      PreparedStatement pstmt = conn.prepareStatement("SELECT active, hostname, provider, type, os, distro, cpuCores, memory, diskSize, publicIpAddress, fqdn, notes FROM servers", ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
       rs = pstmt.executeQuery();
     } catch (Exception ex) {
       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
