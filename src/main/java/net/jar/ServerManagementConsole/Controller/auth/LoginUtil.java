@@ -6,8 +6,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import com.anydesk.ops.Controller.auth.DAOlogin;
-import com.anydesk.ops.Controller.SessionUtils;
+import net.jar.ServerManagementConsole.Controller.auth.DAOlogin;
+import net.jar.ServerManagementConsole.Controller.SessionUtils;
 
 @ManagedBean(name = "beanUser", eager = true)
 @SessionScoped
