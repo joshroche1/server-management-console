@@ -1,0 +1,7 @@
+/home/jroche/projects/github/server-management-console/src/main/java/net/jar/ServerManagementConsole/Controller/DBUtil.java
+/home/jroche/projects/github/server-management-console/src/main/java/net/jar/ServerManagementConsole/Model/ServerModel.java
+/home/jroche/projects/github/server-management-console/src/main/java/net/jar/ServerManagementConsole/Controller/DAOdb.java
+/home/jroche/projects/github/server-management-console/src/main/java/net/jar/ServerManagementConsole/Controller/auth/DAOlogin.java
+/home/jroche/projects/github/server-management-console/src/main/java/net/jar/ServerManagementConsole/Controller/auth/AuthorizationFilter.java
+/home/jroche/projects/github/server-management-console/src/main/java/net/jar/ServerManagementConsole/Controller/auth/LoginUtil.java
+/home/jroche/projects/github/server-management-console/src/main/java/net/jar/ServerManagementConsole/Controller/SessionUtils.java
