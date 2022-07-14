@@ -81,7 +81,8 @@ th {
   color: white;
 }
 footer {
-  background-color: white;
+  background-color: darkgray;
+  color: white;
   position: fixed;
   z-index: 1;
   bottom: 0;

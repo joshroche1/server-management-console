@@ -50,7 +50,7 @@
         <div class="dropdown-content">
           <ul>
             <li><a href="#">EDIT</a></li>
-            <li><h:form id="serverDeleteForm"><h:inputHidden value="#{serv.hostname}" /><h:commandButton value="DELETE" action="#"></h:commandButton></h:form></li>
+            <li><h:form id="serverDeleteForm"><h:inputHidden value="#{serv.hostname}" /><h:commandButton value="DELETE" action="#{beanDAOdb.deleteServer()}"></h:commandButton></h:form></li>
           </ul>
         </div>
       </div>
