@@ -35,7 +35,7 @@
       <td><h:inputText id="formusername" value="#{beanUser.username}" class="col-6"></h:inputText></td></tr>
       <tr><td><label for="formpassword">Password</label></td>
       <td><h:inputSecret id="formpassword" value="#{beanUser.password}" class="col-6"></h:inputSecret></td></tr>
-      <tr><td><h:message for="loginForm">...</h:message></td></tr>
+      <tr><td><h:message id="loginFormMessage">...</h:message></td></tr>
       <tr><td><h:commandButton value="LOGIN" action="#{beanUser.validateUserCredentials}" class="ad-button"></h:commandButton>
       <input type="reset" class="ad-button" /></td></tr>
     </table>

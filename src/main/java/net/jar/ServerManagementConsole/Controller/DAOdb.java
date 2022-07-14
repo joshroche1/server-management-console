@@ -43,6 +43,26 @@ public class DAOdb {
     }
     return rs;
   }
+  public String addServer() {
+    try {
+      dbInstance = new DBUtil();
+      dbInstance.addServer(active,hostname,provider,type,os,distro,cpuCores,memory,diskSize,publicIpAddress,fqdn,notes);
+    } catch (Exception ex) {
+      FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+        FacesMessage.SEVERITY_WARN, ex.getMessage(), "..."));
+    }
+    return "servers";
+  }
+  public String deleteServer() {
+    try {
+      dbInstance = new DBUtil();
+      dbInstance.deleteServer(hostname);
+    } catch (Exception ex) {
+      FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+        FacesMessage.SEVERITY_WARN, ex.getMessage(), "..."));
+    }
+    return "servers";
+  }
   
   public void setHostname(String tmp) { this.hostname = tmp; }
   public void setProvider(String tmp) { this.provider = tmp; }

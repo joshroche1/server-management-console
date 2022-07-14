@@ -42,8 +42,19 @@
 
 <section class="content">
   <h3>SERVERS</h3>
+  <h:message id="serversMessage" for="serverDeleteForm" />
   <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="serv">
-    <h:column><f:facet name="header"></f:facet><a href="serverdetail.xhtml"><span>&#9881;</span></a></h:column>
+    <h:column><f:facet name="header"></f:facet>
+      <div class="dropdown">
+        <a href="serverdetail.xhtml"><span>&#9881;</span></a>
+        <div class="dropdown-content">
+          <ul>
+            <li><a href="#">EDIT</a></li>
+            <li><h:form id="serverDeleteForm"><h:inputHidden value="#{serv.hostname}" /><h:commandButton value="DELETE" action="#{beanDAOdb.deleteServer()}"></h:commandButton></h:form></li>
+          </ul>
+        </div>
+      </div>
+    </h:column>
     <h:column><f:facet name="header">Active</f:facet>#{serv.active}</h:column>
     <h:column><f:facet name="header">Hostname</f:facet>#{serv.hostname}</h:column>
     <h:column><f:facet name="header">Provider</f:facet>#{serv.provider}</h:column>

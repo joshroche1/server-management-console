@@ -78,10 +78,11 @@
     <label>Public IP Address</label></td><td><h:inputText id="addServerFormIP" value="#{beanDAOdb.publicIpAddress}" required="true" /></td></tr><tr><td>
     <label>FQDN</label></td><td><h:inputText id="addServerFormFqdn" value="#{beanDAOdb.fqdn}" required="true" /></td></tr><tr><td>
     <label>Notes</label></td><td><h:inputTextarea id="addServerFormNotes" value="#{beanDAOdb.notes}" required="false" /></td></tr><tr><td>
-    <h:commandButton value="ADD" action="#"></h:commandButton> 
+    <h:commandButton value="ADD" action="#{beanDAOdb.addServer()}"></h:commandButton> 
       <input type="reset" /></td></tr>
     </table>
   </h:form>
+  <h:message id="addServerFormMessage" />
 </section>
 <section class="content">
   
