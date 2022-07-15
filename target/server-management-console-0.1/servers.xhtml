@@ -46,12 +46,10 @@
   <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="serv">
     <h:column><f:facet name="header"></f:facet>
       <div class="dropdown">
-        <a href="serverdetail.xhtml"><span>&#9881;</span></a>
+        <img src="resources/img/settings.svg" style="width: 50px;" />
         <div class="dropdown-content">
-          <ul>
-            <li><a href="#">EDIT</a></li>
-            <li><h:form id="serverDeleteForm"><h:inputHidden value="#{serv.hostname}" /><h:commandButton value="DELETE" action="#{beanDAOdb.deleteServer()}"></h:commandButton></h:form></li>
-          </ul>
+          <a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 50px;" /></a>
+          <h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#{beanDAOdb.deleteServer()}" image="resources/img/delete.svg" style="width: 50px;"></h:commandButton></h:form>
         </div>
       </div>
     </h:column>
@@ -62,8 +60,8 @@
     <h:column><f:facet name="header">OS</f:facet>#{serv.os}</h:column>
     <h:column><f:facet name="header">Distro</f:facet>#{serv.distro}</h:column>
     <h:column><f:facet name="header">CPU Cores</f:facet>#{serv.cpuCores}</h:column>
-    <h:column><f:facet name="header">Memory</f:facet>#{serv.memory}</h:column>
-    <h:column><f:facet name="header">Disk Space</f:facet>#{serv.diskSize}</h:column>
+    <h:column><f:facet name="header">Memory</f:facet>#{serv.memory} GB</h:column>
+    <h:column><f:facet name="header">Disk Space</f:facet>#{serv.diskSize} GB</h:column>
     <h:column><f:facet name="header">Public IP Address</f:facet>#{serv.publicIpAddress}</h:column>
     <h:column><f:facet name="header">FQDN</f:facet>#{serv.fqdn}</h:column>
     <h:column><f:facet name="header">Notes</f:facet>#{serv.notes}</h:column>

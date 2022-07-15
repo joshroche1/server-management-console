@@ -18,6 +18,41 @@
 
 <div class="row" style="position: relative; top: 150px;">
 
+<div>
+  <h3>SERVERS</h3>
+  <h:message id="serversMessage" for="serverDeleteForm" />
+  <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="serv">
+    <h:column><f:facet name="header"></f:facet>
+      <div class="dropdown">
+        <img src="resources/img/settings.svg" style="width: 24px;" />
+        <div class="dropdown-content">
+          <a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 24px;" /></a>
+          <h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#{beanDAOdb.deleteServer()}" image="resources/img/delete.svg" style="width: 24px;"></h:commandButton></h:form>
+        </div>
+      </div>
+      <h:commandButton value="" image="resources/img/play-arrow.svg" action="#" style="width: 24px;"></h:commandButton>
+      <h:commandButton value="" image="resources/img/stop.svg" action="#" style="width: 24px;"></h:commandButton>
+      <h:commandButton value="" image="resources/img/replay.svg" action="#" style="width: 24px;"></h:commandButton>
+    </h:column>
+    <h:column><f:facet name="header">Hostname</f:facet>
+      #{serv.hostname}<h:outputText value = "[" />#{serv.active}<h:outputText value = "]" />
+    </h:column>
+    <h:column><f:facet name="header">Provider/Type</f:facet>#{serv.provider}/#{serv.type}</h:column>
+    <h:column><f:facet name="header">OS/Distro</f:facet>#{serv.os}/#{serv.distro}</h:column>
+    <h:column><f:facet name="header">CPU Cores</f:facet>#{serv.cpuCores}</h:column>
+    <h:column><f:facet name="header">Memory</f:facet>#{serv.memory} GB</h:column>
+    <h:column><f:facet name="header">Disk Space</f:facet>#{serv.diskSize} GB</h:column>
+    <h:column><f:facet name="header">IP/FQDN</f:facet>
+      <h:outputText value = "[" />
+      <h:outputText value="#{serv.publicIpAddress}" />
+      <h:outputText value = "] " />
+      <h:outputLink value="#{serv.fqdn}">#{serv.fqdn}</h:outputLink>
+    </h:column>
+    <h:column><f:facet name="header">Notes</f:facet><p>#{serv.notes}</p></h:column>
+  </h:dataTable>
+  <h:outputScript library="js" name="sortTable.js" />
+</div>
+
 <div class="col-2 col-s-2">
 </div>
 
@@ -25,12 +60,146 @@
 <div class="col-8 col-s-10">
 
 <section class="content">
+  <div class="flex-container">
+    <div class="content col-3 col-s-9">
+      <table>
+        <tr>
+          <th><h3 style="background-color: green; color: white;">ACTIVE</h3>
+          <h:commandButton value="" image="resources/img/play-arrow.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/stop.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/replay.svg" action="#" style="width: 50px;"></h:commandButton>
+          <div class="dropdown">
+            <img src="resources/img/settings.svg" style="width: 50px;" />
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 50px;" /></a></li>
+                <li><h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#" image="resources/img/delete.svg" style="width: 50px;"></h:commandButton></h:form></li>
+              </ul>
+            </div>
+          </div>
+        </th></tr>
+        <tr><td>hostname</td></tr>
+        <tr><td>cloud : VM</td></tr>
+        <tr><td>Linux : Debian</td></tr>
+        <tr><td>1 vCPU : 2 GB RAM</td></tr>
+        <tr><td>128 GB Disk</td></tr>
+        <tr><td>10.11.12.13</td></tr>
+        <tr><td><a href="http://127.0.0.1">http://127.0.0.1</a></td></tr>
+        <tr><td>NOTES Notes notes</td></tr>
+      </table>
+    </div>
+    <div class="content col-3 col-s-9">
+      <table>
+        <tr>
+          <th><h3 style="background-color: green; color: white;">ACTIVE</h3>
+          <h:commandButton value="" image="resources/img/play-arrow.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/stop.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/replay.svg" action="#" style="width: 50px;"></h:commandButton>
+          <div class="dropdown">
+            <img src="resources/img/settings.svg" style="width: 50px;" />
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 50px;" /></a></li>
+                <li><h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#" image="resources/img/delete.svg" style="width: 50px;"></h:commandButton></h:form></li>
+              </ul>
+            </div>
+          </div>
+        </th></tr>
+        <tr><td>{server.hostname}</td></tr>
+        <tr><td>{server.provider} : {server.type}</td></tr>
+        <tr><td>{server.os} : {server.distro}</td></tr>
+        <tr><td>{server.cpuCores} CPU : {server.memory} GB RAM</td></tr>
+        <tr><td>{server.diskSize} GB Disk</td></tr>
+        <tr><td>{server.publicIpAddress}</td></tr>
+        <tr><td><a href="#">{server.fqdn}</a></td></tr>
+        <tr><td>{server.notes}</td></tr>
+      </table>
+    </div>
+    <div class="content col-3 col-s-9">
+      <table>
+        <tr>
+          <th><h3 style="background-color: green; color: white;">ACTIVE</h3>
+          <h:commandButton value="" image="resources/img/play-arrow.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/stop.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/replay.svg" action="#" style="width: 50px;"></h:commandButton>
+          <div class="dropdown">
+            <img src="resources/img/settings.svg" style="width: 50px;" />
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 50px;" /></a></li>
+                <li><h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#" image="resources/img/delete.svg" style="width: 50px;"></h:commandButton></h:form></li>
+              </ul>
+            </div>
+          </div>
+        </th></tr>
+        <tr><td>{server.hostname}</td></tr>
+        <tr><td>{server.provider} : {server.type}</td></tr>
+        <tr><td>{server.os} : {server.distro}</td></tr>
+        <tr><td>{server.cpuCores} CPU : {server.memory} GB RAM</td></tr>
+        <tr><td>{server.diskSize} GB Disk</td></tr>
+        <tr><td>{server.publicIpAddress}</td></tr>
+        <tr><td><a href="#">{server.fqdn}</a></td></tr>
+        <tr><td>{server.notes}</td></tr>
+      </table>
+    </div>
+    <div class="content col-3 col-s-9">
+      <table>
+        <tr>
+          <th><h3 style="background-color: green; color: white;">ACTIVE</h3>
+          <h:commandButton value="" image="resources/img/play-arrow.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/stop.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/replay.svg" action="#" style="width: 50px;"></h:commandButton>
+          <div class="dropdown">
+            <img src="resources/img/settings.svg" style="width: 50px;" />
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 50px;" /></a></li>
+                <li><h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#" image="resources/img/delete.svg" style="width: 50px;"></h:commandButton></h:form></li>
+              </ul>
+            </div>
+          </div>
+        </th></tr>
+        <tr><td>{server.hostname}</td></tr>
+        <tr><td>{server.provider} : {server.type}</td></tr>
+        <tr><td>{server.os} : {server.distro}</td></tr>
+        <tr><td>{server.cpuCores} CPU : {server.memory} GB RAM</td></tr>
+        <tr><td>{server.diskSize} GB Disk</td></tr>
+        <tr><td>{server.publicIpAddress}</td></tr>
+        <tr><td><a href="#">{server.fqdn}</a></td></tr>
+        <tr><td>{server.notes}</td></tr>
+      </table>
+    </div>
+    <div class="content col-3 col-s-9">
+      <table>
+        <tr>
+          <th><h3 style="background-color: green; color: white;">ACTIVE</h3>
+          <h:commandButton value="" image="resources/img/play-arrow.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/stop.svg" action="#" style="width: 50px;"></h:commandButton>
+          <h:commandButton value="" image="resources/img/replay.svg" action="#" style="width: 50px;"></h:commandButton>
+          <div class="dropdown">
+            <img src="resources/img/settings.svg" style="width: 50px;" />
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 50px;" /></a></li>
+                <li><h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#" image="resources/img/delete.svg" style="width: 50px;"></h:commandButton></h:form></li>
+              </ul>
+            </div>
+          </div>
+        </th></tr>
+        <tr><td>{server.hostname}</td></tr>
+        <tr><td>{server.provider} : {server.type}</td></tr>
+        <tr><td>{server.os} : {server.distro}</td></tr>
+        <tr><td>{server.cpuCores} CPU : {server.memory} GB RAM</td></tr>
+        <tr><td>{server.diskSize} GB Disk</td></tr>
+        <tr><td>{server.publicIpAddress}</td></tr>
+        <tr><td><a href="#">{server.fqdn}</a></td></tr>
+        <tr><td>{server.notes}</td></tr>
+      </table>
+    </div>
+  </div>
 </section>
-
-<section class="content">
-  <h3>TEST</h3>
-  <div id="JSONtest"></div>
-<h:outputScript library="js" name="JSONparseTEST.js" />
+<section>
+  
 </section>
 
 </div>
@@ -43,6 +212,7 @@ ASIDE
 
 </div>
 
+<br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br />
 
 </ui:define>
