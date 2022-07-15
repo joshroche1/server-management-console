@@ -9,7 +9,7 @@
 }
 [class*="col-"] {
   float: left;
-  padding: 15px;
+  padding: 16px;
 }
 html {
   font-family: "Lucida Sans", sans-serif;
@@ -43,8 +43,8 @@ header li a:hover {
   background-color: #34A853;   /* GREEN */
 }
 section {
-  margin: 15px;
-  padding: 10px;
+  margin: 16px;
+  padding: 8px;
 }
 a:link {
   text-decoration: none;
@@ -59,7 +59,7 @@ a:active {
   text-decoration: none;
 }
 label {
-  padding: 12px;
+  padding: 8px;
   display: inline-block;
 }
 input[type=button], input[type=submit], input[type=reset] {
@@ -86,8 +86,8 @@ table td, table th {
 tr:nth-child(even){background-color: #f9f9f9;}
 tr:hover {background-color: #ddd;}
 th {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   text-align: left;
   background-color: #34A853;
   color: #f9f9f9;
@@ -115,10 +115,10 @@ footer {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
+  background-color: #f8f8f8;
+  min-width: 48px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
+  padding: 8px 8px;
   z-index: 1;
 }
 .dropdown:hover .dropdown-content {
@@ -129,8 +129,8 @@ footer {
   flex-wrap: wrap;
 }
 .flex-container > div {
-  margin: 10px;
-  padding: 20px;
+  margin: 8px;
+  padding: 8px;
 }
 .menu ul {
   list-style-type: none;
@@ -142,7 +142,7 @@ footer {
 }
 .menu li a {
   display: block;
-  padding: 10px;
+  padding: 8px;
   text-decoration: none;  
 }
 .menu li a:hover {
@@ -150,8 +150,35 @@ footer {
   color: #f9f9f9;
 }
 .content {
-  margin: 15px;
-  padding: 10px;
+  margin: 16px;
+  padding: 8px;
+}
+.subnav {
+  background-color: #666666;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+.subnav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #666666;
+}
+.subnav li {
+  display: inline;
+  float: left;
+}
+.subnav li a {
+  color: #f9f9f9;
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+.subnav li a:hover {
+  background-color: #34A853;   /* GREEN */
 }
 
 /* For mobile phones: */

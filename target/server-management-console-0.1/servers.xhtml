@@ -14,71 +14,81 @@
 
 <ui:composition template="templates/base.xhtml">
 
+<ui:define name="subnav">
+<div style="position:relative; top: 48px;">
+  <ul class="subnav">
+    <li style="background-color: #4285F4; color: #f9f9f9;">
+      <div class="dropdown">
+        <a href="#{beanUser.username}">#{beanUser.username}</a>
+        <div class="dropdown-content">
+          <h:form>
+            <h:commandButton action="#{beanUser.logout}" value="LOGOUT"></h:commandButton>
+          </h:form>
+        </div>
+      </div>
+    </li>
+    <li><a href="addserver.xhtml">ADD SERVER</a></li>
+    <li><a href="#">SERVER REPORTS</a></li>
+    <li><a href="#">SERVER COUNTS</a></li>
+    <li><a href="#">EXPORT</a></li>
+    <li><a href="#">FILTERS</a></li>
+    <li><a href="#">SEARCH</a></li>
+  </ul>
+</div>
+</ui:define>
+
 <ui:define name="content">
 
 <div class="row" style="position: relative; top: 150px;">
 
-<div class="col-2 col-s-2">
-  <div class="content">
-    <h3>#{beanUser.username}</h3>
-    <ul class="menu">
-      <li>
-        <h:form>
-          <h:commandButton action="#{beanUser.logout}" value="LOGOUT" class="ad-button"></h:commandButton>
-        </h:form>
-      </li>
-      <li><a href="addserver.xhtml">ADD SERVER</a></li>
-      <li><a href="#">SERVER REPORTS</a></li>
-      <li><a href="#">SERVER COUNTS</a></li>
-      <li><a href="#">EXPORT</a></li>
-      <li><a href="#">FILTERS</a></li>
-      <li><a href="#">SEARCH</a></li>
-    </ul>
-  </div>
-</div>
-
-
-<div class="col-8 col-s-10">
-
 <section class="content">
   <h3>SERVERS</h3>
   <h:message id="serversMessage" for="serverDeleteForm" />
-  <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="serv">
+  <h:dataTable id="viewTable" value="#{beanDB.getServers()}" var="server">
     <h:column><f:facet name="header"></f:facet>
       <div class="dropdown">
-        <img src="resources/img/settings.svg" style="width: 50px;" />
+        <img src="resources/img/settings.svg" style="width: 24px;" />
         <div class="dropdown-content">
-          <a href="#"><img src="resources/img/check-box.svg" alt="EDIT" style="width: 50px;" /></a>
-          <h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#{beanDAOdb.deleteServer()}" image="resources/img/delete.svg" style="width: 50px;"></h:commandButton></h:form>
+          <h:form><h:commandLink value="serverdetail.xhtml"><f:attribute name="#{server.hostname}" value="#{server.hostname}" /><img src="resources/img/check-box.svg" alt="EDIT" style="width: 24px;" /></h:commandLink></h:form>
+          <h:form><h:inputHidden value="server.hostname" /><h:commandButton value="DELETE" action="#{beanDAOdb.deleteServer()}" image="resources/img/delete.svg" style="width: 24px;"></h:commandButton></h:form>
         </div>
       </div>
+      <h:form>
+      <h:commandButton value="" image="resources/img/play-arrow.svg" action="#" style="width: 24px;"></h:commandButton>
+      </h:form>
+      <h:form>
+      <h:commandButton value="" image="resources/img/stop.svg" action="#" style="width: 24px;"></h:commandButton>
+      </h:form>
+      <h:form>
+      <h:commandButton value="" image="resources/img/replay.svg" action="#" style="width: 24px;"></h:commandButton>
+      </h:form>
     </h:column>
-    <h:column><f:facet name="header">Active</f:facet>#{serv.active}</h:column>
-    <h:column><f:facet name="header">Hostname</f:facet>#{serv.hostname}</h:column>
-    <h:column><f:facet name="header">Provider</f:facet>#{serv.provider}</h:column>
-    <h:column><f:facet name="header">Type</f:facet>#{serv.type}</h:column>
-    <h:column><f:facet name="header">OS</f:facet>#{serv.os}</h:column>
-    <h:column><f:facet name="header">Distro</f:facet>#{serv.distro}</h:column>
-    <h:column><f:facet name="header">CPU Cores</f:facet>#{serv.cpuCores}</h:column>
-    <h:column><f:facet name="header">Memory</f:facet>#{serv.memory} GB</h:column>
-    <h:column><f:facet name="header">Disk Space</f:facet>#{serv.diskSize} GB</h:column>
-    <h:column><f:facet name="header">Public IP Address</f:facet>#{serv.publicIpAddress}</h:column>
-    <h:column><f:facet name="header">FQDN</f:facet>#{serv.fqdn}</h:column>
-    <h:column><f:facet name="header">Notes</f:facet>#{serv.notes}</h:column>
+    <h:column><f:facet name="header">Hostname</f:facet>
+      #{server.hostname}<h:outputText value = "[" />#{server.active}<h:outputText value = "]" />
+    </h:column>
+    <h:column><f:facet name="header">Provider/Type</f:facet>#{server.provider}/#{server.type}</h:column>
+    <h:column><f:facet name="header">OS/Distro</f:facet>#{server.os}/#{server.distro}</h:column>
+    <h:column><f:facet name="header">CPU Cores</f:facet>#{server.cpuCores}</h:column>
+    <h:column><f:facet name="header">Memory</f:facet>#{server.memory} GB</h:column>
+    <h:column><f:facet name="header">Disk Space</f:facet>#{server.diskSize} GB</h:column>
+    <h:column><f:facet name="header">IP/FQDN</f:facet>
+      <h:outputText value = "[" />
+      <h:outputText value="#{server.publicIpAddress}" />
+      <h:outputText value = "] " />
+      <h:outputLink value="#{server.fqdn}">#{server.fqdn}</h:outputLink>
+    </h:column>
+    <h:column><f:facet name="header">Notes</f:facet><p>#{server.notes}</p></h:column>
   </h:dataTable>
   <h:outputScript library="js" name="sortTable.js" />
 </section>
+
+<div id="serverEditModal">
+  
+</div>
+
 <section class="content">
   
 </section>
-
-</div>
-
-<div class="col-2 col-s-12">
-  <div class="content">
-ASIDE
-  </div>
-</div>
 
 </div>
 

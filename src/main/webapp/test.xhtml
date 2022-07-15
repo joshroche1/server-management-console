@@ -14,6 +14,29 @@
 
 <ui:composition template="templates/base.xhtml">
 
+<ui:define name="subnav">
+<div style="position:relative; top: 48px;">
+  <ul class="subnav">
+    <li style="background-color: #4285F4; color: #f9f9f9;">
+      <div class="dropdown">
+        <a href="#{beanUser.username}">#{beanUser.username}</a>
+        <div class="dropdown-content">
+          <h:form>
+            <h:commandButton action="#{beanUser.logout}" value="LOGOUT"></h:commandButton>
+          </h:form>
+        </div>
+      </div>
+    </li>
+    <li><a href="addserver.xhtml">ADD SERVER</a></li>
+    <li><a href="#">SERVER REPORTS</a></li>
+    <li><a href="#">SERVER COUNTS</a></li>
+    <li><a href="#">EXPORT</a></li>
+    <li><a href="#">FILTERS</a></li>
+    <li><a href="#">SEARCH</a></li>
+  </ul>
+</div>
+</ui:define>
+
 <ui:define name="content">
 
 <div class="row" style="position: relative; top: 150px;">

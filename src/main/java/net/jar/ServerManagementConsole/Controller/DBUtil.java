@@ -21,8 +21,13 @@ public class DBUtil {
   private Connection conn = null;
   private ResultSet rs = null;
   
+  private String hostname;
+  
   
   public DBUtil() {}
+  
+  public void setHostname(String tmp) { this.hostname = tmp; }
+  public String getHostname() { return this.hostname; }
   
   private Connection connect() {
     try {
@@ -44,6 +49,19 @@ public class DBUtil {
     try {
       conn = this.connect();
       PreparedStatement pstmt = conn.prepareStatement("SELECT active, hostname, provider, type, os, distro, cpuCores, memory, diskSize, publicIpAddress, fqdn, notes FROM servers", ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+      rs = pstmt.executeQuery();
+    } catch (Exception ex) {
+      FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+        FacesMessage.SEVERITY_WARN, ex.getMessage(), "..."));
+    }
+    return rs;
+  }
+  
+  public ResultSet getServer() {
+    try {
+      conn = this.connect();
+      PreparedStatement pstmt = conn.prepareStatement("SELECT active, hostname, provider, type, os, distro, cpuCores, memory, diskSize, publicIpAddress, fqdn, notes FROM servers WHERE hostname = ?", ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+      pstmt.setString(1,hostname);
       rs = pstmt.executeQuery();
     } catch (Exception ex) {
       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
